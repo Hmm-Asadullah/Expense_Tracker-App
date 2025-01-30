@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} Summary{% endblock title %}
+{% block body %}
+  <form action="/summary">
+    <div class="container my-2">
+        <h1>Expense Summary</h1>
+    {% if totalExp == 0 %}
+    <div class="alert alert-secondary my-3" role="alert">
+        OOPS! There are no Expense added. Add your Expense now to see the summary!
+    </div>
+    {% else %}
+    <h2>Total Expenses: {{totalExp}}</h2>
+    <h2>Expenses by category: </h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S.NO</th>
+            <th scope="col">Expense category</th>
+            <th scope="col">Expense Total Amount</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for category, amount in category_summary.items() %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>{{category}}</td>
+              <td>{{amount}}</td>
+              {% if expenses|length %} 
+              <td>
+                  <a href="/delete/{{ expenses[loop.index - 1].sno }}" type="button" class="btn btn-outline-primary">Delete</button>
+              </td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    </div>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+{% endblock body %}

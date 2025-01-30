@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+<form action="/" method="POST">
+  <div class="container my-3">
+      <h2>Add your Expense</h2>
+      <div class="mb-3 my-4">
+          <label for="category" class="form-label">Enter Expense Category(e.g Food, Rent, Entertainment)</label>
+          <input type="text" name = "category" class="form-control" id="category" aria-describedby="emailHelp" />
+      </div>
+      <div class="mb-3">
+          <label for="expense" class="form-label">Enter Amount Spent</label>
+          <input type="text" name = "expense" class="form-control" id="expense" />
+      </div>
+      <div class="mb-3">
+          <label for="date" class="form-label">Enter Date</label>
+          <input type="date" name = "date" class="form-control" id="date" aria-describedby="emailHelp" />
+      </div>
+      <button type="submit" class="btn btn-primary">Add Expense</button>
+      <br>
+      <a class="btn btn-primary my-3" href="/summary" role="button">View Summary</a>
+  </div>
+</form>
+<!-- <a href="/summary" class="container mx5-3">View Summary</a> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"></script>
+{% endblock body %}
